@@ -1,20 +1,38 @@
-
+var audio;
 var status = 0;
+var volume = 1;
 $(document).ready(function(){
 	$('#player').attr('autoplay','true');
 	//$('#player').attr('autobuffer','true');
+	audio = document.createElement("audio");
+	audio.addEventListener("canplaythrough",
+	function() {
+		//alert("7");
+		audio.play();
+	},
+	false);
+	set_volume(volume);
+	
 	next();
-
+	musicporgress();
+	document.onkeydown = function(event){
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if((e && e.keyCode == 32) || (e && e.keyCode == 179)){
+			play_pause();
+		}
+		else if(e && e.keyCode == 176){
+			next();
+		}
+	}
 });
 
 function musicporgress(){
-	if(document.getElementById('player').ended){
+	if(audio.ended){
 		next();
-		return;
 	}
 	var barlen = $('.progress-line').css('width').split('p')[0];
-	var musiclen = document.getElementById('player').duration;
-	var currentlen = document.getElementById('player').currentTime;
+	var musiclen = audio.duration;
+	var currentlen = audio.currentTime;
 	var len = ((barlen-10)*currentlen/musiclen)+6;
 	$('#progress-inline').animate({width:len+'px'});
 	var i = parseInt(currentlen/60);
@@ -46,9 +64,14 @@ function next(){
 		success:function(str){
 			//alert(str);
 			var data = $.parseJSON(str);
-			document.getElementById('player').src='../music/music/'+data.src;
+			audio.pause();
 			var info = data.douban;
-			
+			//audio.src = info.music_url;
+			audio.src = '../music/musicv2/'+data.src;
+			//audio.src = 'http://mr3.douban.com/201402201817/35e69d396695db6f15c4538cf7a26036/view/song/small/p583476.mp3';
+			audio.load();
+			//window.open(audio.src);
+			//alert(info.music_url);
 			var singer = '';
 			for(var i=0;i<info.attrs.singer.length;i++)
 				singer += info.attrs.singer[i] + ' ';
@@ -58,21 +81,59 @@ function next(){
 			$('#title4').text(info.attrs.publisher);
 			$('#music_img').attr("src",info.image);
 			status = 1;
+			$('#pp_button').css('background-image','url(./img/pause.png)');
 			$('#progress-inline').css('width','6px');
-			musicporgress();
+			
+			//alert("networkstate:"+audio.networkState+" "+audio.error);
 		}
 	});
 }
 
 function play_pause(){
 	if(status == 1){
-		document.getElementById('player').pause();
+		audio.pause();
 		status = 0;
 		$('#pp_button').css('background-image','url(./img/play.png)');
 	}
 	else{
-		document.getElementById('player').play();
+		audio.play();
 		status = 1;
 		$('#pp_button').css('background-image','url(./img/pause.png)');
 	}
+}
+function set_volume(no){
+	if(no < 0) no = 0;
+	if(no > 1) no = 1;
+	audio.volume = no;
+	volume = no;
+	var max = 140;
+	var current_volume = max * no;
+	$('#sound_ico').attr('src','./img/sound24.png');
+	$('#sound_length').animate({width:(6+current_volume)+'px'});
+}
+function volume_0_1(){
+	if(volume > 0){
+		var temp = volume;
+		set_volume(0);
+		volume = -temp;
+		$('#sound_ico').attr('src','./img/sound24-no.png');
+	}
+	else{
+		volume = -volume;
+		set_volume(volume);
+		$('#sound_ico').attr('src','./img/sound24.png');
+	}
+}
+
+function change_volume(t){
+	var mouse_x = window.event.x;
+	var div_x = t.offsetLeft;
+	while(t.offsetParent){
+		t = t.offsetParent;
+		div_x += t.offsetLeft;
+	}
+	var offset = mouse_x - div_x;
+	
+	var max = 146;
+	set_volume(offset/max);
 }

@@ -14,11 +14,8 @@
 	<script type="text/javascript" src="./js/index.js"></script>
 </head>
 <body>
-	<div style="display:none">
-		<audio controls="controls" src="" id="player">
-		</audio>
-	</div>
-	
+
+	<div class="bodycover1"></div>
 	
 	<div class="Sweet_button">
 		<div class="Sweet_pp">
@@ -32,7 +29,18 @@
 		</div>
 		<div id="time_left">0:00</div>
 		<div id="time_right">-0:00</div>
-		<img id="music_img" />
+		<div class="music_ico">
+			<img id="music_img" height="80px"/>
+			<div id="img_cover">
+				<div class="music_sound">
+					<img id="sound_ico" src="./img/sound24.png" width="24px" onclick="volume_0_1()"/>
+					<div class="sound_under">
+						<div id="sound_length"></div>
+						<div class="length_cover" onclick="change_volume(this)"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="music_info">	
 			<div class="music_title"><span id="title1"></span></div>
 			<div class="music_title">发行日期：<span id="title2"></span></div>
@@ -42,7 +50,7 @@
 	</div>
 
 	<div class="footer">
-		<span>Copyright©2014 王瑶菁 @Ghost妖精_甜甜的音乐SweetMusic All Right Reserved.</span>
+		<span>Copyright©2014 王瑶菁<br> @Ghost妖精_甜甜的音乐SweetMusic<br>All Right Reserved.</span>
 	</div>
 	
 </body>
