@@ -10,9 +10,17 @@ foreach( $Const as $name => $val ){
 }
 
 function __autoload($class_name){
-	$filename = "c:/xampp/htdocs/IMSIS/IMSIS/sys/class/class.".$class_name.".inc.php";
+	$filename = "c:/xampp/htdocs/SweetMusic/sys/class/class.".$class_name.".inc.php";
 	if( file_exists($filename) ){
 		include_once( $filename );
+	}
+	
+	else{
+		$filename = str_replace("\\", "/", "lib/".$class_name . ".php");
+		$filename =  "c:/xampp/htdocs/SweetMusic/public/dist/drpc/".$filename;
+		if(file_exists( $filename )) {	
+			require_once($filename);
+		}
 	}
 }
 

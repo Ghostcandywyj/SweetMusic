@@ -14,7 +14,35 @@ body,h1,h2,h3,h4,h5{
 	background-color:rgba(255,255,255,0.3);
 	z-index:1;
 }
-
+.topcover{
+	position:fixed;
+	width:300px;
+	height:50px;
+	left:50%;
+	margin-left:-150px;
+}
+#topmsg{
+	position:relative;
+	width:250px;
+	height:0px;
+	margin-left:25px;
+	text-align:center;
+	margin-top:0px;
+	background-color:rgba(225,225,225,0.8);
+	border-radius:0 0 10px 10px;
+	overflow:hidden;
+}
+.triT{
+	position:relative;
+	width:300px;
+	height:25px;
+	top:-25px;
+	padding:0 10px 0 10px;
+	text-align:center;
+	background-color:rgba(225,225,225,0.8);
+	border-radius:0 0 10px 10px;
+	margin:0px;
+}
 /*progress 进度条*/
 .progress-line{
 	position:absolute;
@@ -156,7 +184,7 @@ body,h1,h2,h3,h4,h5{
 .Sweet_button{
 	position:fixed;
 	left:50%;
-	top:50px;
+	top:60px;
 	margin-left:-150px;
 	width:300px;
 	min-height:300px;
@@ -263,4 +291,124 @@ body,h1,h2,h3,h4,h5{
 .Sweet_trash:active{
 	box-shadow:3px 3px 8px inset;
 }
+/*登陆页面css*/
 
+#login-panel{
+	position:fixed;
+	top:0px;
+	z-index:2000;
+	left:50%;
+	margin-left:-160px;
+	width:320px;
+	height:600px;
+	border-radius:0 0 20px 20px;
+	background-color:rgba(255,255,255,0.9);
+}
+#login-panel button:focus,input:focus{
+	outline-style:none;
+}
+#login-panel input{
+	border-radius:5px;
+	text-align:center;
+}
+#login{
+	margin-top:150px;
+	text-align:center;
+}
+#register{
+	margin-top:150px;
+	text-align:center;
+}
+#user{
+	margin-top:150px;
+	text-align:center;
+}
+.loginbtn{
+	width:46px;
+	height:46px;
+	border-radius:23px;
+}
+.registerbtn{
+	width:100px;
+	height:46px;
+	border-radius:23px;
+}
+#loginerror,#registererror{
+	color:red;
+}
+
+.recommenditem{
+	position:relative;
+	width:100%;
+	margin-top:30px;
+	height:70px;
+}
+.recommendbox{
+	position:relative;
+	float:left;
+	width:100%;
+	height:70px;
+}
+.musicbox{
+	position:absolute;
+	left:50%;
+	margin-left:-35px;
+	width:70px;
+	height:70px;
+	border-radius:35px;
+	background-color:#000;
+}
+.musictitle{
+	position:absolute;
+	width:100%;
+	text-align:center;
+	top:75px;
+}
+.musicbox:hover,.musicright:hover,.musicleft:hover{
+	cursor:pointer;
+}
+.musicbox:active,.musicright:active,.musicleft:active{
+	box-shadow:2px 2px 2px inset;
+}
+.musicleft{
+	position:absolute;
+	width:30px;
+	height:30px;
+	left:25%;
+	top:20px;
+	margin-left:-15px;
+	background:url(../img/left.png);
+	background-size:30px 30px;
+	border-radius:15px;
+}
+.musicright{
+	position:absolute;
+	width:30px;
+	height:30px;
+	left:75%;
+	top:20px;
+	margin-left:-15px;
+	background:url(../img/right.png);
+	background-size:30px 30px;
+	border-radius:15px;
+}
+
+.musictags{
+	width:100%;
+	height:200px;
+	padding-top:20px;
+}
+#newtags{
+	margin-top:20px;
+}
+/*tags*/
+#newtags span{
+	padding:3px;
+	border-radius:5px;
+	background-color:#ff00ff;
+	color:white;
+	margin-left:10px;
+}
+#newtags span:hover{
+	cursor:pointer;
+}
