@@ -22,10 +22,10 @@
 		
 		/*origin*/
 		$num = 0;
-		while(!file_exists('../../music/infov2/' . $num . '.txt')){
+		while(!file_exists('../music/infov2/' . $num . '.txt')){
 			$num = rand(1,2193);
 		}
-		$file_handle = fopen("../../music/infov2/".$num.".txt", "r");
+		$file_handle = fopen("../music/infov2/".$num.".txt", "r");
 		$line = fgets($file_handle);
 		fclose($file_handle);
 		$return = sprintf($str,$num,$line,$num,$result);

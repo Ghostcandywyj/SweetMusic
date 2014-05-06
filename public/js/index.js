@@ -32,6 +32,8 @@ function nowDate(){
 	mi = d.getMinutes(); 
 	se = d.getSeconds();
 }
+
+var tags = 0;
 $(document).ready(function(){
 	//$('#player').attr('autoplay','true');
 	//$('#player').attr('autobuffer','true');
@@ -61,18 +63,31 @@ $(document).ready(function(){
 	$('#tags').keydown(function(event){
 		var e = event || window.event || arguments.callee.caller.arguments[0];
 		var val = $('#tags').val();
+		
 		if((e && e.keyCode == 13) && val != ""){
-			 $('#tags').val("");
-			 $('#newtags').append("<span>"+val+"</span>");
-			 $('#newtags span').each(function(){
-			 	$(this).click(function(){
-			 		$(this).css('display','none');
-			 	});
-			 });
+			if(val.length > 20 || val.length == 0 || tags >= 3){
+				$('#tags').val('');
+				return;
+			}
+			$('#tags').val("");
+			$('#newtags').append("<span>"+val+"</span>");
+			tags++;
 		}
 	});
 });
-
+function cleartags(){
+	$('#newtags').html('');
+}
+function addtags(){
+	var val = $('#tags').val();
+	if(val.length > 20 || val.length == 0 || tags >= 3){
+		$('#tags').val('');
+		return;
+	}
+	$('#tags').val("");
+	$('#newtags').append("<span>"+val+"</span>");
+	tags++;
+}
 function musicporgress(){
 	if(audio.ended){
 		cent = 1;
@@ -194,14 +209,16 @@ function recommendation(){//使用推荐列表中的歌曲进行推荐
 			audio.pause();
 			var info = data.douban;
 
-			audio.src = '../music/musicv2/'+data.src;
+			audio.src = './music/musicv2/'+data.src;
 			audio.load();
+			
 			
 			song = data.songid;
 			var singer = '';
 			for(var i=0;i<info.attrs.singer.length;i++)
 				singer += info.attrs.singer[i] + ' ';
 			$('#title1').text(info.title+'-'+singer);
+			$('#tagid').text(info.title+'-'+singer);
 			$('#title2').text(info.attrs.pubdate[0]);
 			$('#title3').text(info.rating.average);
 			$('#title4').text(info.attrs.publisher);
@@ -256,7 +273,7 @@ function next(){
 			audio.pause();
 			var info = data.douban;
 
-			audio.src = '../music/musicv2/'+data.src;
+			audio.src = './music/musicv2/'+data.src;
 			audio.load();
 			
 			song = data.songid;
@@ -423,7 +440,7 @@ function playthis(){
 	audio.pause();
 	var info = dbinfo;
 
-	audio.src = '../music/musicv2/'+dbid+'.mp3';
+	audio.src = './music/musicv2/'+dbid+'.mp3';
 	audio.load();
 	
 	song = dbid;

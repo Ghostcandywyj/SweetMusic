@@ -13,7 +13,7 @@
 				}
 			';
 		$num = $_POST['songid'];
-		$file_handle = fopen("../../music/infov2/".$num.".txt", "r");
+		$file_handle = fopen("../music/infov2/".$num.".txt", "r");
 		$line = fgets($file_handle);
 		fclose($file_handle);
 		$return = sprintf($str,$num,$line,$num);
@@ -83,10 +83,10 @@
 			';
 		
 		$num = 0;
-		while(!file_exists('../../music/musicv2/' . $num . '.mp3')){
+		while(!file_exists('../music/musicv2/' . $num . '.mp3')){
 			$num = rand(1,2193);
 		}
-		$file_handle = fopen("../../music/infov2/".$num.".txt", "r");
+		$file_handle = fopen("../music/infov2/".$num.".txt", "r");
 		$line = fgets($file_handle);
 		fclose($file_handle);
 		$return = sprintf($str,$num,$line,$num);

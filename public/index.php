@@ -100,9 +100,16 @@ else if($user == 2) echo'
 				<div class="musicright" onclick="showVisitor(2)"></div>
 			</div>
 			<div class="musictags">
+				<p>当前歌曲：<span id="tagid"></span></p>
 				<p id="newtags">
+				
 				</p>
-				<label>Tags:<input type="text" id="tags" /></label>
+				<p><label><input type="text" id="tags" /><button class="btnright" onclick="addtags()">OK</button></label></p>
+				
+				<p><label class="addtags">
+				<button class="btnleft" onclick="cleartags()">清除</button>
+				<button class="btnright">我要打TAG</button>
+				</label></p>
 				<p id="oldtags">
 				
 				</p>

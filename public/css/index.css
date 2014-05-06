@@ -398,8 +398,27 @@ body,h1,h2,h3,h4,h5{
 	height:200px;
 	padding-top:20px;
 }
+.musictags input{
+	border-radius:4px 0 0 4px;
+	border:1px #000000 solid;
+}
+.musictags .btnright{
+	border-radius:0 4px 4px 0;
+	margin-left:-5px;
+	padding-right:5px;
+	border:1px solid #000000;
+}
+.addtags .btnleft{
+	border-radius:4px 0 0 4px;
+	border:1px solid #000000;
+	margin-left:0px;
+}
+.addtags .btnright{
+	border-radius:0 4px 4px 0;
+	margin-left:-5px;
+}
 #newtags{
-	margin-top:20px;
+	min-height:20px;
 }
 /*tags*/
 #newtags span{
