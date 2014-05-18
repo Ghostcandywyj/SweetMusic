@@ -1,4 +1,6 @@
-SweetMusic
+SweetMusic(SweetFM)
 ==========
 
-A music website which uses a music recommendation system raised by my senior
+### SweetFM
+
+这是一款音乐类FM网站，设计理念是清新和简洁。推荐算法使用南京大学计算机科学与技术系研究生王守涛所提出的基于多维时间序列分析的推荐算法。
