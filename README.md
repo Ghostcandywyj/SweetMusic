@@ -1,7 +1,7 @@
 SweetMusic(SweetFM)
 ==========
 
-@[音乐推荐|推荐系统|网站|HTML5|CSS3]
+@(Tags)[音乐推荐|推荐系统|网站|HTML5|CSS3]
 
 ### SweetFM
 
